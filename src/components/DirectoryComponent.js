@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Directory extends Component {
   constructor(props) {
-    //The super(props) is required by react when creating custom components with constructors
     super(props);
     this.state = {
-      camptsites: [
+      campsites: [
         {
           id: 0,
           name: "React Lake Campground",
@@ -37,28 +36,31 @@ class Directory extends Component {
           elevation: 42,
           description:
             "You'll never want to leave this hidden gem, deep within the lush Redux Woods.",
-        }
-      ]
+        },
+      ],
     };
   }
 
-  render() {
-    const directory = this.state.campsites.map(campsite => {
-      return (
-        <div className="col">
-          <img src={campsite.image} alt={campsite.name} />
-          <h2>{campsite.name}</h2>
-          <p>{campsite.description}</p>
-        </div>
-      );
-    });
+    render() {
+        const directory = this.state.campsites.map(campsite => {
+            return (
+              <div key={campsite.id} className="col">
+                <img src={campsite.image} alt={campsite.name} />
+                <h2>{campsite.name}</h2>
+                <p>{campsite.description}</p>
+              </div>
+            );
+        });
 
-    return (
-      <div className="container">
-        <div className="row">{directory}</div>
-      </div>
-    );
-  }
+        return (
+            <div className="container">
+                <div className="row">
+                    {directory}
+                </div>
+            </div>
+        );
+    }
 }
+
 
 export default Directory;
