@@ -22,17 +22,11 @@ class CommentForm extends Component {
       isModalOpen: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   toggleModal() {
     this.setState({ isModalOpen: !this.state.isModalOpen });
-  }
-
-  handleLogin(value) {
-    alert("Current State is: " + JSON.stringify(value));
-    console.log("Current State is: " + JSON.stringify(value));
-    this.toggleModal();
   }
 
   handleSubmit(values) {
@@ -41,7 +35,7 @@ class CommentForm extends Component {
       this.props.campsiteId,
       values.rating,
       values.author,
-      values.text
+      values.comments
     );
   }
 
@@ -59,7 +53,7 @@ class CommentForm extends Component {
             Submit Comment
           </ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleLogin(values)}>
+            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <div className="form-group">
                 <label htmlFor="rating">Rating: </label>
                 <Control.select
